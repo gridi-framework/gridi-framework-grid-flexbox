@@ -9,7 +9,7 @@
         @include flex-basis(auto);
     }
 
-    .column {
+    .#{$grid-column-class-prefix} {
         @include flex-grow(0);
         @include flex-shrink(0);
         @include flex-basis(auto);
@@ -18,7 +18,7 @@
 
     //Make columns sizes
     @for $i from 1 through $grid-columns {
-        .column-#{$i} {
+        .#{$grid-column-class-prefix}-#{$i} {
             @include flex-basis(percentage($i/$grid-columns));
             max-width: percentage($i/$grid-columns);
         }
