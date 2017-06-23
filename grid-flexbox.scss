@@ -1,0 +1,34 @@
+.grid-flexbox {
+    .row {
+        @include display-flex();
+        @include justify-content(flex-start);
+        @include align-items(flex-start);
+        @include flex-flow(row, wrap);
+        @include flex-grow(0);
+        @include flex-shrink(1);
+        @include flex-basis(auto);
+    }
+
+    .column {
+        @include flex-grow(0);
+        @include flex-shrink(0);
+        @include flex-basis(auto);
+        max-width: 100%;
+    }
+
+    //Make columns sizes
+    @for $i from 1 through $grid-columns {
+        .column-#{$i} {
+            @include flex-basis(percentage($i/$grid-columns));
+            max-width: percentage($i/$grid-columns);
+        }
+    }
+}
+@include supports-flex() {
+    .flexbox-grid .row {
+        &:before,
+        &:after {
+            display: none !important;
+        }
+    }
+}
