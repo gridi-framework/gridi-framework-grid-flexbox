@@ -7,6 +7,11 @@
         @include flex-grow(0);
         @include flex-shrink(1);
         @include flex-basis(auto);
+
+        &:before,
+        &:after {
+            display: none !important;
+        }
     }
 
     .#{$grid-column-class-prefix} {
@@ -21,14 +26,6 @@
         .#{$grid-column-class-prefix}-#{$i} {
             @include flex-basis(percentage($i/$grid-columns));
             max-width: percentage($i/$grid-columns);
-        }
-    }
-}
-@include supports-flex() {
-    .flexbox-grid .row {
-        &:before,
-        &:after {
-            display: none !important;
         }
     }
 }
