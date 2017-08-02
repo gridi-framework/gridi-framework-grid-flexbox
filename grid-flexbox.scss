@@ -10,7 +10,8 @@
 
         &:before,
         &:after {
-            display: none !important;
+            display: block !important;
+            height: 0 !important;
         }
     }
 
