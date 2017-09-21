@@ -8,8 +8,8 @@
         @include flex-shrink(1);
         @include flex-basis(auto);
 
-        &:before,
-        &:after {
+        &::before,
+        &::after {
             display: block !important;
             height: 0 !important;
         }
