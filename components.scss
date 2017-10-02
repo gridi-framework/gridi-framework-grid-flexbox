@@ -1,0 +1,50 @@
+.grid-flexbox {
+    .row {
+        @include display-flex();
+        @include justify-content(flex-start);
+        @include align-items(flex-start);
+        @include flex-flow(row, wrap);
+        @include flex-grow(0);
+        @include flex-shrink(1);
+        @include flex-basis(auto);
+    }
+
+    .#{$grid-column-class-prefix} {
+        @include flex-grow(0);
+        @include flex-shrink(0);
+        @include flex-basis(auto);
+        max-width: 100%;
+    }
+
+    //Make columns sizes
+    @for $i from 1 through $grid-columns {
+        .#{$grid-column-class-prefix}-#{$i} {
+            @include flex-basis(percentage($i/$grid-columns));
+            width: percentage($i/$grid-columns);
+            max-width: percentage($i/$grid-columns);
+        }
+    }
+}
+
+@include old-browsers-style($gridi-framework-grid-flexbox-support-old-browsers) {
+    .grid-flexbox {
+        .row {
+            display: block;
+        
+            &::before,
+            &::after {
+                content: " ";
+                display: table;
+                width: 100%;
+            }
+        
+            &::after {
+                clear: both;
+            }
+        }
+
+        .#{$grid-column-class-prefix} {
+            float: left;
+        }
+    }
+}
